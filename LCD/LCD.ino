@@ -1,18 +1,26 @@
-#include <LiquidCrystal.h>
+#include <STEMMA_LiquidCrystal.h>
 
-LiquidCrystal lcd(22,21,5,18,23,19);
+STEMMA_LiquidCrystal lcd;
 
 void setup() {
   // put your setup code here, to run once:
     lcd.begin(16, 2);
-    lcd.clear();
-    lcd.print("How to Interface");
-
-    // go to row 1 column 0, note that this is indexed at 0
-    lcd.setCursor(0,1); 
-    lcd.print ("Kaesebrot       ");
-    lcd.setCursor(17,1); 
-    lcd.print ("fuer Fluffy     ");
+    //lcd.cursor();
+    //delay(2000);
+    //lcd.noCursor();
+    //delay(2000);
+    //lcd.cursor();
+    while(1){
+    lcd.print("1234");
+    delay(2000);
+    lcd.print("5678");
+    delay(2000);
+    lcd.print("9112");
+    delay(2000);
+    lcd.print("9112");
+    delay(2000);
+    }
+    
 }
 
 void loop() {

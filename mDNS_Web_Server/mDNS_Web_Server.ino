@@ -13,46 +13,47 @@
     - For Mac OSX and iOS support is built in through Bonjour already.
   - Point your browser to http://esp32.local, you should see a response.
 
- */
-
-#include <LiquidCrystal.h>
-LiquidCrystal lcd(22,21,5,18,23,19);
+*/
 #include <WiFi.h>
-#include <ESPmDNS.h>
-#include <WiFiClient.h>
-
 const char* ssid = "UPC8476216";
 const char* password = "zQY5rrpr2dwx";
-
-// TCP server at port 80 will respond to HTTP requests
-WiFiServer server(80);
+WiFiServer wifiServer(80);
 
 void setup(void)
 { 
-    lcd.begin(16, 2);
-    lcd.clear();
-    lcd.setCursor(0,1); 
-    lcd.print ("Kaesebrot       ");
-    
+   Serial.begin(115200);
+   Serial.println("Blabla");
+   WiFi.begin(ssid, password);
+   while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi..");
+   }
+     Serial.println("Connected to the WiFi network");
+  Serial.println(WiFi.localIP());
  
-    // Connect to WiFi network
-    WiFi.begin(ssid, password);
-    
-    // Wait for connection
-    lcd.setCursor(0,1); 
-    while (WiFi.status() != WL_CONNECTED) {
-        delay(500);
-        
-        //lcd.print (".");
-    }
-    //lcd.setCursor(0,1); 
-    //lcd.print("Connected to ");
-    //lcd.setCursor(0,2); 
-    //lcd.println(WiFi.localIP());
-
+  wifiServer.begin();
 }
 
 void loop(void)
 {
-   
+  WiFiClient client = wifiServer.available();
+ 
+  if (client) {
+ 
+    while (client.connected()) {
+ 
+      while (client.available()>0) {
+        char c = client.read();
+        client.write(c);
+        Serial.println(c);
+      }
+ 
+      //delay(10);
+    }
+ 
+    client.stop();
+    Serial.println("Client disconnected");
+ 
+  }
+       //Serial.println("Blabla");  
 }
