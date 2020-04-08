@@ -37,8 +37,12 @@ void loop(void) {
   u8g2.firstPage();
   do {
     u8g2.setFont(u8g2_font_6x12_tr);  //schriftart setzen
-    u8g2.drawStr(0,24,"Hello World!");  //schreibe hello world auf x0 y24
+    u8g2.drawStr(0,24,"Wurstbrot");  //schreibe hello world auf x0 y24
     u8g2.drawXBM(10, 0, 8, 8, wifi_bits); //Zeichne definiertes Bild in 8x8 auf x10y0
+    u8g2.drawRFrame(20,15,30,22,7);
+    u8g2.drawBox(124,60,4,4);
+    u8g2.drawFrame(5,5,110,40);
+    u8g2.drawCircle(64, 32, 30, U8G2_DRAW_ALL);
   } while ( u8g2.nextPage() );
   //delay(1000);
 }
