@@ -1,0 +1,9 @@
+BLK - Kathode - Gnd
+BLA - Anode - 3.3V
+E - Pin 18
+R/W - Pin 19
+RS - Pin 21
+VSS - Gnd
+VDD - 5 V
+V0 - 5V
+PSB - 0V
