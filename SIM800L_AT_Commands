@@ -1,0 +1,12 @@
++++AT
+ATE1
+AT+CGATT=1
+AT+SAPBR=3,1,"CONTYPE","GPRS"
+AT+SAPBR=3,1,"APN","internet.eplus.de"
+AT+SAPBR=1,1
+AT+HTTPINIT
+AT+HTTPPARA="CID",1
+AT+HTTPPARA="URL","http://mkochen.de/dreamcloud/newdata.php?voltage=10.0"
+AT+HTTPACTION=2
+AT+HTTPTERM
+AT+SAPBR=0,1
